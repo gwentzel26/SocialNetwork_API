@@ -16,6 +16,6 @@ router.route('/').get(getThoughts).post(createThought);
 router.route('/:thoughtId').get(getSingleThought).delete(deleteThought).put(updateThought);
 
 // /api/thoughts/:thoughtId/reactions
-router.route('/:thoughtId/reactions').delete(deleteReaction).post(addReaction);
-
+router.route('/:thoughtId/reactions').post(addReaction);
+router.route('/:thoughtId/reactions/:reactionId').delete(deleteReaction)
 module.exports = router;
