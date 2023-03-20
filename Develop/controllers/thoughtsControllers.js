@@ -27,9 +27,12 @@ module.exports = {
           {
             _id: req.body.userId,
           },
-          { $push: { thoughts: thoughts._id } }
-        );
-        res.json(thoughts);
+          { $push: { thoughts: thoughts._id } },
+          {new: true}
+        ).then((user) =>
+        res.json(user))
+        // res.json(thoughts);
+
       })
 
       .catch((err) => {
@@ -70,26 +73,28 @@ module.exports = {
   addReaction(req, res) {
     Thought.findOneAndUpdate({_id: req.params.thoughtId},
         { $addToSet: { reactions: req.body } },
-        
-            { runValidators: true, new: true }
+            { runValidators: true, new: true },
+            console.log(req.body)
         )
-        .then((thoughts) =>
-        !thoughts
+        .then((data) => {
+        !data
           ? res.status(404).json({ message: "No thought with this id!" })
-          : res.json(thoughts)
-      )
+          : res.json(data)
+        })
       .catch((err) => res.status(500).json(err));
 },
 
     deleteReaction(req, res) {
         Thought.findOneAndUpdate({_id: req.params.thoughtId},
-            {$pull: {reactions: req.params.reactionId}},
-        { runValidators: true, new: true },)
-        .then((thoughts) =>
+            {$pull: {reactions: req.body}},
+        { runValidators: true, new: true },
+          console.log(req.params.reactionId)
+        )
+        .then((thoughts) => {
         !thoughts
           ? res.status(404).json({ message: "No thought with this id!" })
           : res.json(thoughts)
-      )
+        })
       .catch((err) => res.status(500).json(err));
     }
 };
