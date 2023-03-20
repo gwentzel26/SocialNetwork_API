@@ -2,7 +2,7 @@
   
 ## **Description (Motivation? The why? Solved Problems?)**
       
-  This project function as a backend to a social networking app.  The client is able to perform a multitude of CRUD operations by hitting routes into the database in MongoDB.  You can Get all users and thoughts(same as a post or status), Get a single thought or user by id, update thoughts and users, as well as delet thoughts and users.  Once can go a step further and add/remove friends and add/remove reactions to another user's thought.
+  This project functions as a backend to a social networking app.  The client is able to perform a multitude of CRUD operations by hitting routes into the database in MongoDB.  You can Get all users and thoughts(same as a post or status), Get a single thought or user by id, update thoughts and users, as well as delete thoughts and users.  Once can go a step further and add/remove friends and add/remove reactions to another user's thought.
       
 ## **Table of Contents** 
       
